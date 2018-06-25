@@ -1,4 +1,30 @@
-let gameScore = document.querySelector('.score');
+const gameScore = document.querySelector('.score');
+let score = 0;
+
+let timer = document.querySelector('.timer');
+let second = 0;
+let minute = 0;
+
+let interval;
+
+const gameLives = document.querySelectorAll('.fa-heart');
+let lives = 3;
+
+let playerMove = true;
+
+function startTimer() {
+	if (interval) {
+	  return;
+	}
+	interval = setInterval(function() {
+	  timer.innerHTML = ` Timer: ${minute} : ${second}`;
+	  second++;
+	  if (second == 60) {
+		minute++;
+		second = 0;
+	  }
+	}, 1000);
+  }
 
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
@@ -9,7 +35,7 @@ var Enemy = function(x, y, speed) {
 	// a helper we've provided to easily load images
 	this.x = x;
 	this.y = y;
-	this.speed = Math.floor((Math.random() * 150) + 250);
+	this.speed = Math.floor((Math.random() * 150) + 350);
 	this.sprite = 'images/enemy-bug.png';
   
 };
@@ -27,17 +53,29 @@ Enemy.prototype.update = function(dt) {
 	}
 
 	// check for collisions
-	if (this.x < player.x + 30 &&
-        this.x + 30 > player.x &&
-        this.y < player.y + 30 &&
-        this.y + 30 > player.y)
+	if (this.x < player.x + 50 &&
+        this.x + 50 > player.x &&
+        this.y < player.y + 50 &&
+        this.y + 50 > player.y)
 	{
 		setTimeout(function () {
 			player.x = 400;
 			player.y = 480;
 		}, 100);
+		
+livesLeft();
 	}
 };
+
+function livesLeft() {
+	for (i = 0; i < gameLives.length; i++) {
+	if (i > 1) {
+		gameLives[i].style.visibility = "collapse";
+	}
+  }
+
+}
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -73,14 +111,14 @@ Player.prototype.handleInput = function(keypress) {
 	if (keypress == 'down' && this.y < 500) {
 		this.y += 83;
 	}
-	if (this.y < 30) {
+	if (this.y < 70) {
 		setTimeout(function () {
 			player.x = 400;
 			player.y = 480;
-        }, 600);
+        }, 100);
         
-        gameScore += 50;
-        score.innerHTML = gameScore;
+		score += 50;
+		gameScore.innerHTML = score;
 	}
 }
 // Now instantiate your objects.
@@ -92,9 +130,9 @@ const player = new Player();
 
 const enemy = new Enemy(0, 145);
 const enemy1 = new Enemy(-80, 205);
-const enemy2 = new Enemy(-180, 270);
-const enemy3 = new Enemy(-230, 340);
-const enemy4 = new Enemy(-280, 400);
+const enemy2 = new Enemy(-280, 270);
+const enemy3 = new Enemy(-330, 340);
+const enemy4 = new Enemy(-480, 400);
 
 const allEnemies = [enemy, enemy1, enemy2, enemy3, enemy4];
 
@@ -107,6 +145,8 @@ document.addEventListener('keyup', function(e) {
 		39: 'right',
 		40: 'down'
 	};
-
+if(playerMove) {
 	player.handleInput(allowedKeys[e.keyCode]);
+}
+startTimer();
 });
