@@ -1,4 +1,47 @@
 body {
     text-align: center;
     background-color: blueviolet;
+    font-family: 'Jua', sans-serif;
+    font-size: 24px;
 }
+
+h1 {
+    margin: 5px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .score-panel {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    width: 445px;
+    margin-bottom: 1px;
+    margin-top: 10px;
+    color: rgb(201, 236, 44);
+  }
+
+  .score-panel .restart {
+    float: right;
+    cursor: pointer;
+  }
+
+  .score-panel .lives {
+    list-style: none;
+    display: inline-block;
+    color: red;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin: 0 5px 0 0;
+  } 
+
+  .score-panel .lives li {
+    list-style: none;
+    display: inline-block;
+  } 
