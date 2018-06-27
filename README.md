@@ -4,7 +4,7 @@
 
 * [About](#about)
 * [How to run the game](#how-to-run-the-game)
-* [How to play the game](#howtoplaythegame)
+* [How to play the game](#how-to-play-the-game)
 
 ## About
 
