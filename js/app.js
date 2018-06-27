@@ -29,13 +29,6 @@ closeModal.onclick = function() {
   modal.style.display = "none";
 };
 
-// code from w3schools
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
 function startTimer() {
   if (interval) {
     return;
@@ -122,10 +115,12 @@ function closeMessage() {
 }
 window.onclick = function(event) {
   if (event.target == lastModal) {
-    lastModal.style.display = "none";
+	lastModal.style.display = "none";
+  } else if (event.target == modal) {
+		modal.style.display = "none";
+	  }
     clearInterval(interval);
-  }
-};
+  };
 
 function playAgain() {
   lastModal.style.display = "none";
