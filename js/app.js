@@ -91,7 +91,7 @@ Enemy.prototype.update = function(dt) {
 };
 
 function livesLeft() {
-  if (lives >= 1) {
+  if (lives >= 1) { // with the help of my mentor Vaishnavi
     gameLives[lives - 1].style.visibility = "collapse";
     lives--;
   }
