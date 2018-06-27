@@ -1,36 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Effective JavaScript: Frogger</title>
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Effective JavaScript: Frogger</title>
+  <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <div class="container">
+  <div class="container">
 
-          <h1>Classic Arcade Game</h1>
-      
+    <h1>Classic Arcade Game</h1>
 
-        <section class="score-panel">
-          
-                Score: <span class="score"> 0 </span>
-          
-                <span class="timer"> Timer: 00: 00 </span>
-          
+    <section class="score-panel">
 
-                      <ul class="lives">
+      <div id="help"> <i class="fa fa-info-circle"></i> </div>
+
+      Score: <span class="score"> 0 </span> Timer: <span class="timer">  0 mins: 0 secs</span>
+
+      <ul class="lives"> Lives:
         <li><i class="fa fa-heart"></i></li>
         <li><i class="fa fa-heart"></i></li>
         <li><i class="fa fa-heart"></i></li>
       </ul>
 
-              </section>
-            </div>
-    <script src="js/resources.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
+      <button class="newGame">New Game</button>
+
+    </section>
+
+  </div>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>How to play the game</h2>
+      <p>Move the arrow ➸ keys of your keyboard in order to move the player <img src='images/char-pink-girl.png' alt="pink-girl-player"> up, down, right and left.</p>
+      <p>Each time the player reaches the water you earn 50 points!</p>
+      <p>Beware of the bugs! <img src='images/enemy-bug.png' alt="enemy-bug"> If they hit your player, you lose one of your lives ❤ and if you lose all of them, the game is over! 😩</p>
+
+      <p>Good luck!</p>
+      <p> 🍀 ꘏ 🍀</p>
+    </div>
+
+  </div>
+
+  <div id="lastModal" class="finalModal">
+
+    <!-- Modal content -->
+    <div class="modal-info">
+      <span class="closeMod">&times;</span>
+      <h2>Game is over!</h2>
+      <p>I am sorry, you have lost all of your lives! 😩</p>
+      <p class="final-score">Your score is</p>
+      <p class="final-time">You made it in</p>
+      <p>Maybe you will have better luck next time!</p>
+      <p>Beware of the bugs! <img src='images/enemy-bug.png' alt="enemy-bug"><img src='images/enemy-bug.png' alt="enemy-bug"></p>
+
+      <button class="tryAgain" onclick="playAgain()">Try again?</button>
+
+    </div>
+
+  </div>
+
+  <script src="js/resources.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/engine.js"></script>
 </body>
+
 </html>
