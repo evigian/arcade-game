@@ -162,10 +162,11 @@ Player.prototype.handleInput = function(keypress) {
     this.y += 83;
   }
   if (this.y < 70) {
+	let self = this;  
     setTimeout(function() {
-      player.x = 400;
-      player.y = 480;
-    }, 10);
+      self.x = 400;
+      self.y = 480;
+    }, 100);
 
     score += 50;
     gameScore.innerHTML = score;
